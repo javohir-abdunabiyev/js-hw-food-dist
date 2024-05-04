@@ -86,3 +86,48 @@ function changeImg(btn, imgs) {
 }
 
 changeImg(tab_btns, tab_img)
+
+
+
+
+
+// timer
+const deadline = "2024-05-09 00:00"
+
+function getRemainingTime(endTime) {
+    const t = Date.parse(endTime) - Date.parse(new Date()),
+    days =  Math.floor((t / 1000) / 60 / 60 / 24),
+    hours =  Math.floor((t / 1000) / 60 / 60 % 24),
+    minutes =  Math.floor((t / 1000) / 60 % 60),
+    seconds =  Math.floor((t / 1000) % 60);
+
+    return {
+        t,
+        days,
+        hours,
+        minutes,
+        seconds
+    }
+
+}
+
+function setTimer(endTime, selector) {
+    const t = document.querySelector(selector),
+    days = t.querySelector('#days'),
+    hours = t.querySelector('#hours'),
+    minutes = t.querySelector('#minutes'),
+    seconds = t.querySelector('#seconds'),
+    interval = setInterval(updateTimer, 1000)
+    
+    function updateTimer() {
+        const t = getRemainingTime(endTime)
+        
+        days.innerHTML = t.days
+        hours.innerHTML = t.hours
+        minutes.innerHTML = t.minutes
+        seconds.innerHTML = t.seconds
+    }
+
+}
+
+setTimer(deadline, '.timer')
