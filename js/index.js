@@ -93,6 +93,7 @@ changeImg(tab_btns, tab_img)
 
 // timer
 const deadline = "2024-05-09 00:00"
+const confeti = document.querySelector('.promotion__timer')
 
 function getRemainingTime(endTime) {
     const t = Date.parse(endTime) - Date.parse(new Date()),
@@ -121,6 +122,10 @@ function setTimer(endTime, selector) {
     
     function updateTimer() {
         const t = getRemainingTime(endTime)
+
+        if(t.t <= 0) {
+            clearInterval(interval)
+        }
         
         days.innerHTML = t.days
         hours.innerHTML = t.hours
@@ -131,3 +136,7 @@ function setTimer(endTime, selector) {
 }
 
 setTimer(deadline, '.timer')
+
+
+
+
