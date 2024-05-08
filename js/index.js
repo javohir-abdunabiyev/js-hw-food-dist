@@ -204,10 +204,9 @@ act_btns.forEach((btn) => {
 const order_console_log = document.querySelectorAll('.order__input')
 const order_btn = document.querySelector('#btn_console_log')
 
-order_console_log.forEach(inps => {
-    inps.oninput = () => {
-        order_btn.onclick = () => {
-            console.log(inps.value);
-        }
+
+    order_btn.onclick = () => {
+        order_console_log.forEach(inp => {
+            console.log(inp.value, inp.name);
+        })
     }
-})
